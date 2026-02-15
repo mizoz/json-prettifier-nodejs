@@ -1,24 +1,31 @@
 # JSON Prettifier Node.js
 
-A command-line tool to format and prettify JSON data.
+[![npm Version](https://img.shields.io/npm/v/json-prettifier-nodejs?style=flat-square)](https://www.npmjs.com/package/json-prettifier-nodejs)
+[![npm Downloads](https://img.shields.io/npm/dm/json-prettifier-nodejs?style=flat-square)](https://www.npmjs.com/package/json-prettifier-nodejs)
+[![License](https://img.shields.io/npm/l/json-prettifier-nodejs?style=flat-square)](LICENSE)
+[![Node Version](https://img.shields.io/node/v/json-prettifier-nodejs?style=flat-square)](https://www.npmjs.com/package/json-prettifier-nodejs)
+[![GitHub Stars](https://img.shields.io/github/stars/mizoz/json-prettifier-nodejs?style=flat-square)](https://github.com/mizoz/json-prettifier-nodejs)
+
+> A Node.js CLI tool for formatting and prettifying JSON data with customizable indentation.
 
 ## Features
 
-- Pretty print JSON with custom indentation
+- Format JSON with custom indentation
 - Minify JSON
-- Syntax highlighting (colors)
-- Validate JSON syntax
 - Sort keys alphabetically
-- Filter JSON paths
-- Support for large files
+- Validate JSON syntax
+- Color output in terminal
+- JavaScript/TypeScript API
 
 ## Installation
+
+### From npm
 
 ```bash
 npm install -g json-prettifier-nodejs
 ```
 
-Or clone and install:
+### From Source
 
 ```bash
 git clone https://github.com/mizoz/json-prettifier-nodejs.git
@@ -28,53 +35,48 @@ npm install
 
 ## Usage
 
-```bash
-# Pretty print from file
-json-prettifier pretty data.json
+### Command Line
 
-# Pretty print from stdin
-echo '{"name":"test"}' | json-prettifier pretty
+```bash
+# Prettify JSON
+json-prettify '{"name":"test"}'
+
+# With indentation
+json-prettify '{"name":"test"}' --indent 4
 
 # Minify JSON
-json-prettifier minify data.json
-
-# With custom indentation (2 spaces)
-json-prettifier pretty --indent 2 data.json
-
-# Sort keys alphabetically
-json-prettifier pretty --sort data.json
-
-# Validate JSON
-json-prettifier validate data.json
+json-prettify '{"name": "test"}' --minify
 ```
 
-## Options
+### JavaScript API
 
-- `-i, --indent` - Number of spaces for indentation (default: 2)
-- `-s, --sort` - Sort object keys alphabetically
-- `-c, --color` - Enable syntax highlighting
-- `-v, --validate` - Only validate JSON syntax
+```javascript
+const { JSONPrettifier } = require("json-prettifier-nodejs");
 
-## Examples
+const prettifier = new JSONPrettifier();
 
-### Input
-```json
-{"name":"John","age":30,"city":"NYC"}
+// Prettify
+const formatted = prettifier.prettify('{"name":"test"}', { indent: 2 });
+console.log(formatted);
 ```
 
-### Output (pretty)
-```json
-{
-  "name": "John",
-  "age": 30,
-  "city": "NYC"
-}
-```
+## Requirements
+
+- Node.js 14+
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-MIT License
+This project is licensed under the MIT License.
 
 ## Author
 
-mizoz
+**mizoz**
+- GitHub: [@mizoz](https://github.com/mizoz)
+
+---
+
+⭐ If you find this project useful, please consider giving it a star on GitHub!
